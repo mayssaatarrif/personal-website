@@ -1,0 +1,17 @@
+/* Add this to your CSS file */
+.custom-carousel .carousel-arrow {
+  display: none; /* Hide the arrows */
+}
+
+/* Change dot color */
+.custom-carousel .carousel-indicators {
+  display: flex; /* Ensure they are displayed in a row */
+}
+
+.custom-carousel .carousel-indicator {
+  background-color: red; /* Change to your desired color */
+}
+
+.custom-carousel .carousel-indicator-active {
+  background-color: blue; /* Change the active dot color */
+}
