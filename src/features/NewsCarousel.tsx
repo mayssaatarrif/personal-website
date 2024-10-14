@@ -85,4 +85,7 @@ const NewsCarousel: React.FC = () => {
   );
 };
 
+
+
+
 export default NewsCarousel;
