@@ -22,7 +22,7 @@ const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <nav className="bg-gray-100 h-12 w-full fixed left-0 lg:top-60">
+    <nav className="bg-gray-100 h-12 w-full fixed left-0 lg:top-72">
       <div className="flex items-center justify-between bg-gray-100">
         <div className="text-sm breadcrumbs">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -182,7 +182,7 @@ const Highness: React.FC = () => {
       <div className="container mx-auto p-4">
       <TopBar />
       <Navbar />
-      <img src={Image19} alt="" />
+      <img src={Image19} alt="" className='w-full h-auto' />
       <Breadcrumb />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14">
         <div className="col-span-1">
