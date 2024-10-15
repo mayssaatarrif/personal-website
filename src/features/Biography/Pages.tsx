@@ -54,6 +54,7 @@ const PaginatedArticles: React.FC = () => {
   if (error) return <div className="text-center py-4 text-red-500">An error occurred: {(error as Error).message}</div>;
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="max-w-4xl mx-auto">
       <div className="grid gap-6">
         {data?.articles.map((article) => (
@@ -84,6 +85,7 @@ const PaginatedArticles: React.FC = () => {
           </button>
         ))}
       </div>
+    </div>
     </div>
   );
 };

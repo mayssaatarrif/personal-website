@@ -54,7 +54,7 @@ const Academic: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <TopBar />
       <Navbar />
       <img src={Image19} alt='' className="w-full h-auto" /> 

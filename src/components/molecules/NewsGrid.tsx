@@ -12,6 +12,7 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ title, date, description, image }) => (
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
   <div className="bg-white ml-5">
     <div className="relative">
       <img 
@@ -33,6 +34,7 @@ const NewsCard: React.FC<NewsCardProps> = ({ title, date, description, image }) 
           <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
           <div className="w-3 h-3 bg-gray-300 rounded-full"></div>
         </div>
+      </div>
       </div>
     </div>
   </div>
@@ -64,6 +66,7 @@ const NewsGrid: React.FC = () => {
   ];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="container mx-auto px-4 py-8">
       <div className="grid grid-cols-3 gap-8 mb-4">
         <div className="text-left ml-5">
@@ -83,6 +86,7 @@ const NewsGrid: React.FC = () => {
         
       </div>
       <div className="border-l border-gray-600"></div>
+    </div>
     </div>
   );
 };

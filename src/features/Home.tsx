@@ -50,6 +50,7 @@ const Home = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col min-h-screen">
       <TopBar />
       <Navbar />
@@ -60,10 +61,6 @@ const Home = () => {
             {[Image5, Image6, Image7, Image8].map((image, index) => (
               <div key={index} className="relative">
                 <img src={image} alt={`Slide ${index + 1}`} className="object-cover w-full h-full" />
-                <div className="absolute bottom-4 left-4 text-white bg-black bg-opacity-80 p-2 rounded z-10">
-                  <h3 className="text-lg">Your Text Here</h3>
-                  <p className="text-sm">Additional Information</p>
-                </div>
               </div>
             ))}
           </Carousel>
@@ -136,6 +133,7 @@ const Home = () => {
       </div>
 
       <Footer />
+    </div>
     </div>
   );
 };

@@ -58,6 +58,7 @@ const ImportantLinks = () => {
   ];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="container mx-auto p-4">
       <div className="grid grid-cols-3 relative">
         {universities.map((university, index) => (
@@ -105,6 +106,7 @@ const ImportantLinks = () => {
       
       {/* Additional margin for the last row */}
       <div className="h-8"></div>
+    </div>
     </div>
   );
 };

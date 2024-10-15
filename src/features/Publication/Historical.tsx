@@ -22,6 +22,7 @@ import { Minus, Plus, Printer, Share2 } from 'lucide-react';
 const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
           <div className="flex items-center justify-between bg-gray-100">
             <div className="text-sm breadcrumbs">
@@ -40,6 +41,7 @@ const Breadcrumb = () => {
             </div>
           </div>
         </nav>
+        </div>
   );
 };
 
@@ -88,6 +90,7 @@ const InHisHighnessWords = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 mb-6 shadow-md">
       <h2 className="text-xl font-bold mb-4">In His Highness's Words</h2>
       <div className="mb-4">
@@ -121,6 +124,7 @@ const InHisHighnessWords = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
@@ -129,6 +133,7 @@ const TalesInPictures = () => {
   const talesData = [Image86, Image87, Image88, Image89, Image90, Image91];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 shadow-md mb-6">
       <h2 className="text-xl font-bold mb-4">Tales in Pictures</h2>
       <div className="grid grid-cols-2 gap-6">
@@ -142,6 +147,7 @@ const TalesInPictures = () => {
         ))}
       </div>
       <button className="bg-[#bbbd4f] text-white px-4 py-2 mt-4 hover:bg-[#a7a94a] transition duration-200">View All</button>
+    </div>
     </div>
   );
 };
@@ -158,6 +164,7 @@ const Historical = () => {
   const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col min-h-screen">
       <TopBar />
       <Navbar />
@@ -221,6 +228,7 @@ const Historical = () => {
       </main>
 
       <Footer />
+    </div>
     </div>
   );
 };

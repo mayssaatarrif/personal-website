@@ -62,6 +62,7 @@ const NewsCarousel: React.FC = () => {
   const displayedItems = newsItems.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="relative bg-gray-100 text-gray-800 py-6">
       <div className="container mx-auto px-4">
         <h2 className="text-xl font-bold mb-4 text-center">Latest News</h2>
@@ -81,6 +82,7 @@ const NewsCarousel: React.FC = () => {
       <button className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full" onClick={handleNext}>
         <ArrowRight className="w-6 h-6" />
       </button>
+      </div>
     </div>
   );
 };

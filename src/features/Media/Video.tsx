@@ -21,6 +21,7 @@ import Image19 from '../../images/image19.jpg';
 const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
           <div className="flex items-center justify-between bg-gray-100">
             <div className="text-sm breadcrumbs">
@@ -39,6 +40,7 @@ const Breadcrumb = () => {
             </div>
           </div>
         </nav>
+        </div>
   );
 };
 
@@ -87,6 +89,7 @@ const InHisHighnessWords = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 mb-6 shadow-md">
       <h2 className="text-xl font-bold mb-4">In His Highness's Words</h2>
       <div className="mb-4">
@@ -119,6 +122,7 @@ const InHisHighnessWords = () => {
           </button>
         </div>
       </div>
+      </div>
     </div>
   );
 };
@@ -128,6 +132,7 @@ const TalesInPictures = () => {
   const talesData = [Image86, Image87, Image88, Image89, Image90, Image91];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 shadow-md mb-6">
       <h2 className="text-xl font-bold mb-4">Tales in Pictures</h2>
       <div className="grid grid-cols-2 gap-6">
@@ -141,6 +146,7 @@ const TalesInPictures = () => {
         ))}
       </div>
       <button className="bg-[#bbbd4f] text-white px-4 py-2 mt-4 hover:bg-[#a7a94a] transition duration-200">View All</button>
+    </div>
     </div>
   );
 };
@@ -161,6 +167,7 @@ const Video: React.FC = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="container mx-auto p-4 bg-white">
       <TopBar/>
       <Navbar/>
@@ -222,6 +229,7 @@ const Video: React.FC = () => {
 
       {/* Footer */}
       <Footer/>
+      </div>
     </div>
   );
 };
@@ -236,6 +244,7 @@ interface VideoCardProps {
 
 const VideoCard: React.FC<VideoCardProps> = ({ image, title, date, duration, description }) => {
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex border-b pb-6">
       <div className="relative w-1/3 mr-4">
         <img src={image} alt={title} className="w-full object-cover" />
@@ -249,6 +258,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ image, title, date, duration, des
         </p>
         <p className="text-gray-600 mb-4">{description}</p>
         <button className="bg-[#bbbd4f] text-white px-4 py-2 rounded">Watch Now</button>
+      </div>
       </div>
     </div>
   );

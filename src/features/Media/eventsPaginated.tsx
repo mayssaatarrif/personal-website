@@ -1,5 +1,3 @@
-// src/pages/EventsMock.ts
-
 // Generating pages for 468 total pages with 5 events per page
 const generateMockEvents = () => {
     const events = [];

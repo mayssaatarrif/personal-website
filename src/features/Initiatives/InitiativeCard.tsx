@@ -17,6 +17,7 @@ export interface Initiative {
 
 const InitiativeCard: React.FC<InitiativeCardProps> = ({ image, title, date, description }) => {
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-white border-2 border-gray-300 hover:border-[#b2b355] transition duration-300 shadow-md p-4">
       <img src={image} alt={title} className="w-full h-auto mb-4" />
       <h2 className="text-xl font-semibold mb-2 text-[#333333]">{title}</h2>
@@ -25,6 +26,7 @@ const InitiativeCard: React.FC<InitiativeCardProps> = ({ image, title, date, des
       <button className="bg-[#b2b355] text-white px-4 py-2 hover:bg-[#b2b355] transition duration-200">
         Read More
       </button>
+    </div>
     </div>
   );
 };

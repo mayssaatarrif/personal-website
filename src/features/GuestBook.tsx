@@ -16,9 +16,7 @@ import TopBar from '../components/atoms/Topbar';
 import Navbar from  '../components/atoms/Navbar';
 import Footer from '../components/atoms/Footer';
 import Image19 from '../images/image19.jpg';
-const Header = () => {
-  // ... (Header component remains the same as before)
-};
+
 const InHisHighnessWords = () => {
   const wordsData = [
     {
@@ -63,6 +61,7 @@ const InHisHighnessWords = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 mb-6 shadow-md">
       <h2 className="text-xl font-bold mb-4">In His Highness's Words</h2>
       <div className="mb-4">
@@ -95,6 +94,7 @@ const InHisHighnessWords = () => {
           </button>
         </div>
       </div>
+      </div>
     </div>
   );
 };
@@ -104,6 +104,7 @@ const TalesInPictures = () => {
   const talesData = [Image86, Image87, Image88, Image89, Image90, Image91];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 shadow-md mb-6">
       <h2 className="text-xl font-bold mb-4">Tales in Pictures</h2>
       <div className="grid grid-cols-2 gap-6">
@@ -118,12 +119,14 @@ const TalesInPictures = () => {
       </div>
       <button className="bg-[#bbbd4f] text-white px-4 py-2 mt-4 hover:bg-[#a7a94a] transition duration-200">View All</button>
     </div>
+    </div>
   );
 };
 
 const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
           <div className="flex items-center justify-between bg-gray-100">
             <div className="text-sm breadcrumbs">
@@ -142,6 +145,7 @@ const Breadcrumb = () => {
             </div>
           </div>
         </nav>
+        </div>
   );
 };
 const Book = () => {
@@ -166,6 +170,7 @@ const Book = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-white p-6 rounded-lg shadow-md">
        
       <h2 className="text-2xl font-bold mb-4">Guest Book</h2>
@@ -277,11 +282,13 @@ const Book = () => {
         </button>
       </form>
     </div>
+    </div>
   );
 };
 
 const GuestBook = () => {
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="container mx-auto p-4">
       <TopBar />
       <Navbar />
@@ -302,6 +309,7 @@ const GuestBook = () => {
         </div>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

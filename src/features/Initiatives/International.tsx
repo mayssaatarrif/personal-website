@@ -15,6 +15,7 @@ import Image95 from '../../images/image95.jpg';
 const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
           <div className="flex items-center justify-between bg-gray-100">
             <div className="text-sm breadcrumbs">
@@ -33,6 +34,7 @@ const Breadcrumb = () => {
             </div>
           </div>
         </nav>
+        </div>
   );
 };
 
@@ -81,6 +83,7 @@ const InHisHighnessWords = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 p-6 mb-6 shadow-md">
       <h2 className="text-xl font-bold mb-4">In His Highness's Words</h2>
       <div className="mb-4">
@@ -114,6 +117,7 @@ const InHisHighnessWords = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
@@ -128,12 +132,14 @@ interface InitiativeCardProps {
 // InitiativeCard component that receives image, title, date, and description as props
 const InitiativeCard: React.FC<InitiativeCardProps> = ({ image, title, date, description }) => {
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-gray-100 border-2 border-gray-300 hover:border-[#bbbd4f] transition duration-300 shadow-md p-4 mb-4">
       <img src={image} alt={title} className="w-full h-auto mb-4" />
       <h2 className="text-xl font-semibold mb-2">{title}</h2>
       <p className="text-[#bbbd4f] mb-2">{date}</p>
       <p className="text-gray-600 mb-4">{description}</p>
       <button className="bg-[#bbbd4f] text-white px-4 py-2">Read More</button>
+    </div>
     </div>
   );
 };
@@ -168,6 +174,7 @@ const Global: React.FC = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex flex-col min-h-screen">
       <TopBar />
       <Navbar />
@@ -245,6 +252,7 @@ const Global: React.FC = () => {
         </div>
       </main>
       <Footer />
+      </div>
     </div>
   );
 };

@@ -30,6 +30,7 @@ const Footer = () => {
   ];
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <footer className="p-8 bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Top part: Biography & Sections */}
@@ -100,6 +101,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
+    </div>
   );
 };
 

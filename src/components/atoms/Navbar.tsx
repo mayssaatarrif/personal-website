@@ -71,6 +71,7 @@ const Navbar = () => {
   };
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <nav className=" text-white bg-gray-100">
       <div className="container mx-auto">
         <div className="relative">
@@ -120,6 +121,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

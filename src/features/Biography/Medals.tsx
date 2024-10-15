@@ -368,6 +368,7 @@ const Medals: React.FC = () => {
 
   return (
     <div className="bg-white">
+       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <TopBar />
       <Navbar />
       <img src={Image19} alt='' className="w-full h-auto" />
@@ -433,6 +434,7 @@ const Medals: React.FC = () => {
         </div>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

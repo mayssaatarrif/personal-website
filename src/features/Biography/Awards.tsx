@@ -226,6 +226,7 @@ const Awards: React.FC = () => {
   const navigate = useNavigate();
 
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-white">
       <TopBar />
       <Navbar />
@@ -292,6 +293,7 @@ const Awards: React.FC = () => {
         </div>
       </div>
       <Footer />
+    </div>
     </div>
   );
 };

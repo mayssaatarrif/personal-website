@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const TopBar = () => {
   const navigate = useNavigate()
   return (
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="bg-white shadow-sm">
       <div className="container mx-auto flex justify-between items-center p-3">
         {/* Logo and Name Section */}
@@ -48,6 +49,7 @@ const TopBar = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };
