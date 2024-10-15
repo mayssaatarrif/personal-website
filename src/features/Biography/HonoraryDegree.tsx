@@ -233,7 +233,7 @@ const HonoraryDegree: React.FC = () => {
 
       <div className="max-w-6xl mx-auto p-4">
         {/* Breadcrumbs and share, print, zoom icons */}
-        <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
+        <nav className="bg-gray-100 h-12 w-full fixed left-0 lg:top-60">
           <div className="flex items-center justify-between bg-gray-100">
             <div className="text-sm breadcrumbs">
               <ul>

@@ -24,7 +24,7 @@ const Breadcrumb = () => {
   const navigate = useNavigate();
   return (
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <nav className="bg-gray-100 h-12 w-full absolute left-0 top-72">
+     <nav className="bg-gray-100 h-12 w-full fixed left-0 lg:top-60">
       <div className="flex items-center justify-between bg-gray-100">
         <div className="text-sm breadcrumbs">
           <ul>

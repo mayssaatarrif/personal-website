@@ -1,18 +1,19 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 type DropdownKeys = 'biography' | 'publications' | 'initiatives' | 'media';
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Use navigate for programmatic navigation
+  const navigate = useNavigate();
   const [dropdownOpen, setDropdownOpen] = useState<Record<DropdownKeys, boolean>>({
     biography: false,
     publications: false,
     initiatives: false,
     media: false,
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { icon: <FontAwesomeIcon icon={faHome} size="lg" className="text-[#b2b355] hover:text-white transition-transform duration-200 transform hover:scale-125" />, label: '', url: '/' },
@@ -64,64 +65,114 @@ const Navbar = () => {
 
   const handleNavigation = (url: string) => {
     if (url.startsWith('http')) {
-      window.open(url, '_blank'); // External links
+      window.open(url, '_blank');
     } else {
-      navigate(url); // Internal links using useNavigate
+      navigate(url);
     }
+    setMobileMenuOpen(false);
   };
 
-  return (
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <nav className=" text-white bg-gray-100">
-      <div className="container mx-auto">
-        <div className="relative">
-          <ul className="flex items-center justify-between">
-            {navItems.map((item, index) => (
-              <li key={index} className="flex-1 text-center relative mx-2"> {/* Adjusted margin here */}
-                <button
-                  onClick={() => item.url ? handleNavigation(item.url) : item.isDropdown && item.key && toggleDropdown(item.key)}
-                  className="block text-center whitespace-nowrap leading-[50px] no-underline font-sans font-semibold text-[0.9em] text-gray-400 overflow-hidden hover:text-[#b2b355] py-2 px-4" // Added padding here
-                >
-                  {item.icon}
-                  {item.label && <span className="ml-1">{item.label}</span>}
-                </button>
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setMobileMenuOpen(false);
+      }
+    };
 
-                {item.isDropdown && item.key && (
-                  <div 
-                    className={`absolute left-0 w-[200px] bg-[#b2b355] text-white mt-2 shadow-lg z-[1000] transition-opacity duration-300 ease-in-out ${dropdownOpen[item.key] ? 'opacity-100' : 'opacity-0 hidden'}`}
-                    style={{ top: '100%', marginTop: '0px' }}
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : 'unset';
+  }, [mobileMenuOpen]);
+
+  return (
+    <nav className="bg-gray-100 text-gray-400 sticky top-0 z-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <button onClick={() => handleNavigation('/')} className="text-[#b2b355] hover:text-white">
+              <FontAwesomeIcon icon={faHome} size="lg" />
+            </button>
+          </div>
+          <div className="hidden md:block">
+            <div className="flex items-baseline space-x-4">
+              {navItems.slice(1).map((item, index) => (
+                <div key={index} className="relative group">
+                  <button
+                    onClick={() => item.url ? handleNavigation(item.url) : item.isDropdown && item.key && toggleDropdown(item.key)}
+                    className="text-gray-400 hover:text-[#b2b355] px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    <ul className="py-2">
-                      {item.key === 'biography' && biographyLinks.map((link, linkIndex) => (
-                        <li key={linkIndex} className="hover:text-lime-100">
-                          <button onClick={() => handleNavigation(link.url)} className="block w-full px-4 py-2 text-sm text-left">{link.label}</button>
-                        </li>
-                      ))}
-                      {item.key === 'publications' && publicationLinks.map((link, linkIndex) => (
-                        <li key={linkIndex} className="hover:text-lime-100">
-                          <button onClick={() => handleNavigation(link.url)} className="block w-full px-4 py-2 text-sm text-left">{link.label}</button>
-                        </li>
-                      ))}
-                      {item.key === 'initiatives' && initiativeLinks.map((link, linkIndex) => (
-                        <li key={linkIndex} className="hover:text-lime-100">
-                          <button onClick={() => handleNavigation(link.url)} className="block w-full px-4 py-2 text-sm text-left">{link.label}</button>
-                        </li>
-                      ))}
-                      {item.key === 'media' && mediaLinks.map((link, linkIndex) => (
-                        <li key={linkIndex} className="hover:text-lime-100">
-                          <button onClick={() => handleNavigation(link.url)} className="block w-full px-4 py-2 text-sm text-left">{link.label}</button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
+                    {item.label}
+                  </button>
+                  {item.isDropdown && item.key && (
+                    <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 ease-in-out">
+                      <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        {item.key === 'biography' && biographyLinks.map((link, linkIndex) => (
+                          <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left" role="menuitem">{link.label}</button>
+                        ))}
+                        {item.key === 'publications' && publicationLinks.map((link, linkIndex) => (
+                          <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left" role="menuitem">{link.label}</button>
+                        ))}
+                        {item.key === 'initiatives' && initiativeLinks.map((link, linkIndex) => (
+                          <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left" role="menuitem">{link.label}</button>
+                        ))}
+                        {item.key === 'media' && mediaLinks.map((link, linkIndex) => (
+                          <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left" role="menuitem">{link.label}</button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="md:hidden">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            >
+              <span className="sr-only">Open main menu</span>
+              <FontAwesomeIcon icon={mobileMenuOpen ? faTimes : faBars} />
+            </button>
+          </div>
         </div>
       </div>
+
+      {mobileMenuOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            {navItems.map((item, index) => (
+              <div key={index}>
+                <button
+                  onClick={() => item.url ? handleNavigation(item.url) : item.isDropdown && item.key && toggleDropdown(item.key)}
+                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium w-full text-left"
+                >
+                  {item.label}
+                </button>
+                {item.isDropdown && item.key && dropdownOpen[item.key] && (
+                  <div className="pl-4">
+                    {item.key === 'biography' && biographyLinks.map((link, linkIndex) => (
+                      <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 w-full text-left">{link.label}</button>
+                    ))}
+                    {item.key === 'publications' && publicationLinks.map((link, linkIndex) => (
+                      <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 w-full text-left">{link.label}</button>
+                    ))}
+                    {item.key === 'initiatives' && initiativeLinks.map((link, linkIndex) => (
+                      <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 w-full text-left">{link.label}</button>
+                    ))}
+                    {item.key === 'media' && mediaLinks.map((link, linkIndex) => (
+                      <button key={linkIndex} onClick={() => handleNavigation(link.url)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 w-full text-left">{link.label}</button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </nav>
-    </div>
   );
 };
 
